@@ -10,7 +10,7 @@ app.config.from_object(Config)
 # Initialize extensions
 db.init_app(app)
 migrate = Migrate(app, db)
-CORS(app)  # Allow any origin, method, and header
+CORS(app, resources={r"/*": {"origins": "*"}}) # Allow any origin, method, and header
  
 @app.route("/todos", methods=["GET"])
 def get_todos():
